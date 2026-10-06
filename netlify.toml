@@ -1,6 +1,8 @@
+
 [build]
   publish = "."
-  command = "echo 'Sem build - site estático'"
+  functions = "netlify/functions"
+  command = "echo 'Sem build - site estatico'"
 
 [[redirects]]
   from = "/admin"
