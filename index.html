@@ -78,7 +78,7 @@ body{background:#0a0a0a;color:#fff;font-family:Inter,Arial,sans-serif}
     <div class="logo"><b>GRUPO LUCHINI</b><span>SEMINOVOS PREMIUM</span></div>
     <div class="nav">
       <span style="color:#666">📍 Jundiaí - SP</span>
-      <a href="https://wa.me/5511XXXXXXXXX" target="_blank">Falar no WhatsApp</a>
+      <a href="https://wa.me/551145834515" target="_blank">Falar no WhatsApp (11) 4583-4515</a>
     </div>
   </div>
 </header>
@@ -121,12 +121,13 @@ body{background:#0a0a0a;color:#fff;font-family:Inter,Arial,sans-serif}
   <div class="lb-thumbs" id="lbThumbs"></div>
 </div>
 
-<a class="whats" href="https://wa.me/5511XXXXXXXXX" target="_blank">W</a>
+<a class="whats" href="https://wa.me/551145834515" target="_blank">W</a>
 
 <script>
 let veiculos = [];
 let filtroAtual = 'todos';
 let lbFotos = []; let lbIndex = 0;
+const WHATS_NUM = "551145834515";
 
 async function carregar(){
   try{
@@ -181,7 +182,7 @@ function render(){
 }
 function whats(modelo){
   const txt = encodeURIComponent(`Olá Grupo Luchini! Tenho interesse no ${modelo} que vi na vitrine. Ainda está disponível?`);
-  window.open(`https://wa.me/5511XXXXXXXXX?text=${txt}`,'_blank');
+  window.open(`https://wa.me/${WHATS_NUM}?text=${txt}`,'_blank');
 }
 function abrirLightbox(vIdx, fIdx){
   const v = veiculos[vIdx]; if(!v) return;
