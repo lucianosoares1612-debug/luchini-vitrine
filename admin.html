@@ -3,229 +3,166 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Modo Gerente 3.1 - Luchini Seguro</title>
+<title>Modo Gerente 4.0 - 20 Carros - Luchini</title>
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
 <style>
-  *{box-sizing:border-box} body{background:#0f0f0f;color:#fff;font-family:Arial,Helvetica,sans-serif;margin:0;padding:20px}
-  .login-box{max-width:400px;margin:100px auto;background:#1e1e1e;padding:30px;border-radius:12px;border:1px solid #333;text-align:center}
-  input,button,select,textarea{width:100%;padding:12px;margin:8px 0;border-radius:8px;border:1px solid #333;background:#2a2a2a;color:#fff}
+  *{box-sizing:border-box} body{background:#0f0f0f;color:#fff;font-family:Arial,sans-serif;margin:0;padding:20px}
+  .login-box{max-width:400px;margin:80px auto;background:#1e1e1e;padding:30px;border-radius:12px;border:1px solid #333;text-align:center}
+  input,button,select{width:100%;padding:12px;margin:8px 0;border-radius:8px;border:1px solid #333;background:#2a2a2a;color:#fff}
   button{background:#facc15;color:#000;font-weight:bold;cursor:pointer;border:none}
-  button:hover{background:#eab308}
   .hidden{display:none}
   .card{background:#1e1e1e;border:1px solid #333;border-radius:12px;padding:15px;margin:15px 0}
-  .foto-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin-top:10px}
+  .foto-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px;margin-top:10px}
   .foto-item{position:relative;border:2px solid #333;border-radius:8px;overflow:hidden;cursor:grab;background:#000;aspect-ratio:4/3}
-  .foto-item:active{cursor:grabbing}
-  .foto-item img{width:100%;height:100%;object-fit:cover;display:block}
   .foto-item.capa{border-color:#facc15;box-shadow:0 0 0 2px #facc15}
-  .foto-item .badge{position:absolute;top:4px;left:4px;background:#facc15;color:#000;font-size:10px;font-weight:bold;padding:2px 6px;border-radius:4px}
-  .foto-item .remove{position:absolute;top:4px;right:4px;background:rgba(255,0,0,0.8);color:#fff;border:none;width:24px;height:24px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;margin:0;font-size:14px}
-  .drag-hint{font-size:12px;color:#aaa;margin:6px 0}
-  .topbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;background:#1e1e1e;padding:12px;border-radius:10px;border:1px solid #333}
+  .foto-item img{width:100%;height:100%;object-fit:cover}
+  .foto-item .badge{position:absolute;top:3px;left:3px;background:#facc15;color:#000;font-size:10px;font-weight:bold;padding:2px 5px;border-radius:4px}
+  .foto-item .remove{position:absolute;top:3px;right:3px;background:rgba(255,0,0,.85);color:#fff;border:none;width:22px;height:22px;border-radius:50%;cursor:pointer;padding:0;margin:0}
+  .topbar{display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between;background:#1e1e1e;padding:12px;border-radius:10px;border:1px solid #333}
 </style>
 </head>
 <body>
 
 <div id="login" class="login-box">
-  <h2 style="color:#facc15">MODO GERENTE</h2>
-  <p style="color:#aaa;font-size:13px">Acesso restrito Luchini Seminovos</p>
-  <input type="password" id="senha" placeholder="Digite a senha de gerente">
-  <button onclick="logar()">Entrar como gerente</button>
-  <p id="erro" style="color:#f87171;display:none;margin-top:10px">Senha incorreta</p>
+  <h2 style="color:#facc15">MODO GERENTE 4.0</h2>
+  <p style="color:#aaa;font-size:12px">Suporta até 20 carros • Acesso Luchini</p>
+  <input type="password" id="senha" placeholder="Senha de gerente">
+  <button onclick="logar()">Entrar</button>
+  <p id="erro" style="color:#f87171;display:none">Senha incorreta</p>
 </div>
 
 <div id="painel" class="hidden">
   <div class="topbar">
-    <div><b style="color:#facc15">MODO GERENTE 3.1 - GALERIA MULTIFOTO</b><br><small id="infoQtd">0 veículos</small></div>
-    <div style="display:flex;gap:8px;flex-wrap:wrap">
-      <button onclick="exportar()" style="width:auto;padding:10px 16px">⬇️ Exportar veiculos.json para GitHub</button>
-      <button onclick="logout()" style="width:auto;background:#333;color:#fff;padding:10px 16px">Sair</button>
-    </div>
+    <div><b style="color:#facc15">MODO GERENTE 4.0 - 20 CARROS</b><br><small id="infoQtd">0 veículos</small></div>
+    <div style="display:flex;gap:8px"><button onclick="exportar()" style="width:auto">⬇️ Exportar veiculos.json</button><button onclick="logout()" style="width:auto;background:#333;color:#fff">Sair</button></div>
   </div>
-
-  <div class="card" style="border-color:#facc15;background:#2a2410">
-    <b>Como atualizar cliente automaticamente via GitHub + Netlify (NOVO 3.1):</b><br>
-    <small>1. Adicione os carros abaixo (arraste as fotos para ordenar).<br>2. Clique em Exportar.<br>3. No GitHub cole no veiculos.json e confirme. A primeira foto é sempre a capa.</small>
+  <div class="card" style="border-color:#22c55e">
+    ✅ Agora suporta <b>20 carros</b> com até 12 fotos cada! Fotos são comprimidas automaticamente (640px, qualidade 55%) para caber. Arraste para mudar ordem. GitHub aceita até 100MB, então 20 carros (~10MB) vai tranquilo.
   </div>
-
   <div class="card">
-    <h3>Gestão da vitrine - galeria 3.1</h3>
     <button onclick="novoVeiculo()">+ Adicionar veículo</button>
     <div id="lista"></div>
   </div>
 </div>
 
 <script>
-// CONFIG
-const SENHA_CORRETA = "Luchini123";
-const STORAGE_KEY = "luchini_veiculos_v5";
-let veiculos = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
-let editIndex = -1;
+const SENHA="Luchini123";
+let veiculos=[];
+
+function abrirDB(){
+  return new Promise((res,rej)=>{
+    const r=indexedDB.open("LuchiniDBv4",1);
+    r.onupgradeneeded=e=>e.target.result.createObjectStore("veiculos");
+    r.onsuccess=e=>res(e.target.result);
+    r.onerror=e=>rej(e);
+  });
+}
+async function carregar(){
+  try{
+    const db=await abrirDB();
+    const tx=db.transaction("veiculos","readonly");
+    const v=await new Promise(r=>{ const q=tx.objectStore("veiculos").get("lista"); q.onsuccess=()=>r(q.result); q.onerror=()=>r(null); });
+    if(v&&v.length) veiculos=v;
+    else{
+      const antigo=localStorage.getItem("luchini_veiculos_v5");
+      if(antigo) veiculos=JSON.parse(antigo);
+    }
+  }catch(e){
+    try{ veiculos=JSON.parse(localStorage.getItem("luchini_veiculos_v5")||"[]"); }catch{}
+  }
+  render();
+}
+async function salvarBD(){
+  try{
+    const db=await abrirDB();
+    const tx=db.transaction("veiculos","readwrite");
+    tx.objectStore("veiculos").put(veiculos,"lista");
+  }catch(e){}
+  try{ localStorage.setItem("luchini_veiculos_v5", JSON.stringify(veiculos).slice(0,4000000)); }catch{}
+}
 
 function logar(){
-  const s = document.getElementById('senha').value;
-  if(s === SENHA_CORRETA){
+  if(document.getElementById('senha').value===SENHA){
+    sessionStorage.setItem('logado','1');
     document.getElementById('login').classList.add('hidden');
     document.getElementById('painel').classList.remove('hidden');
-    render();
-  } else {
-    document.getElementById('erro').style.display='block';
-  }
+    carregar();
+  }else document.getElementById('erro').style.display='block';
 }
-function logout(){ location.reload(); }
+function logout(){ sessionStorage.removeItem('logado'); location.reload(); }
 
-function salvarStorage(){
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(veiculos));
-  render();
-}
+function salvar(){ salvarBD().then(render); }
+function salvarSilencioso(){ salvarBD().then(()=>{ const size=(JSON.stringify(veiculos).length/1024/1024).toFixed(2); document.getElementById('infoQtd').innerText=`${veiculos.length}/20 veículos | ${size} MB`; }); }
 
 function novoVeiculo(){
-  editIndex = -1;
-  const modelo = prompt("Modelo do veículo (ex: Onix LTZ 2022):");
-  if(!modelo) return;
+  const modelo=prompt("Modelo (ex: Onix LTZ 2022):"); if(!modelo) return;
   veiculos.unshift({modelo, ano:"", preco:"", km:"", fotos:[], status:"estoque"});
-  editIndex = 0;
-  salvarStorage();
-  setTimeout(()=> abrirEdicao(0), 100);
+  salvar();
 }
-
-function abrirEdicao(i){
-  editIndex = i;
-  render();
-}
-
 function render(){
-  document.getElementById('infoQtd').innerText = `${veiculos.length} veículos | Fonte ${STORAGE_KEY}`;
-  const lista = document.getElementById('lista');
-  lista.innerHTML = "";
-  veiculos.forEach((v, i)=>{
-    const div = document.createElement('div');
-    div.className = "card";
-    div.innerHTML = `
-      <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <input style="flex:2" placeholder="Modelo" value="${v.modelo||''}" oninput="veiculos[${i}].modelo=this.value; salvarStorageSilencioso()">
-        <input style="flex:1" placeholder="Ano" value="${v.ano||''}" oninput="veiculos[${i}].ano=this.value; salvarStorageSilencioso()">
-        <input style="flex:1" placeholder="Preço" value="${v.preco||''}" oninput="veiculos[${i}].preco=this.value; salvarStorageSilencioso()">
-        <input style="flex:1" placeholder="KM" value="${v.km||''}" oninput="veiculos[${i}].km=this.value; salvarStorageSilencioso()">
-        <select style="flex:1;min-width:140px" onchange="veiculos[${i}].status=this.value; salvarStorageSilencioso(); render()">
-          <option value="estoque" ${(v.status==='estoque'||!v.status)?'selected':''}>🚗 EM ESTOQUE</option>
+  const size=(JSON.stringify(veiculos).length/1024/1024).toFixed(2);
+  document.getElementById('infoQtd').innerText=`${veiculos.length}/20 veículos | ${size} MB | ${veiculos.length>=20?'LIMITE ATINGIDO':''}`;
+  const lista=document.getElementById('lista'); lista.innerHTML="";
+  veiculos.forEach((v,i)=>{
+    const div=document.createElement('div'); div.className="card";
+    div.innerHTML=`
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <input style="flex:2" value="${(v.modelo||'').replace(/"/g,'&quot;')}" placeholder="Modelo" oninput="veiculos[${i}].modelo=this.value; salvarSilencioso()">
+        <input style="flex:1" value="${v.ano||''}" placeholder="Ano" oninput="veiculos[${i}].ano=this.value; salvarSilencioso()">
+        <input style="flex:1" value="${v.preco||''}" placeholder="Preço" oninput="veiculos[${i}].preco=this.value; salvarSilencioso()">
+        <input style="flex:1" value="${v.km||''}" placeholder="KM" oninput="veiculos[${i}].km=this.value; salvarSilencioso()">
+        <select style="flex:1;min-width:130px" onchange="veiculos[${i}].status=this.value; salvarSilencioso(); render()">
+          <option value="estoque" ${v.status==='estoque'||!v.status?'selected':''}>🚗 EM ESTOQUE</option>
           <option value="a_caminho" ${v.status==='a_caminho'?'selected':''}>🚚 A CAMINHO</option>
           <option value="vendido" ${v.status==='vendido'?'selected':''}>✅ VENDIDO</option>
         </select>
       </div>
-      <div style="margin-top:6px;font-size:12px;color:${(v.status==='a_caminho'?'#facc15':'#22c55e')}">Status: <b>${(v.status==='a_caminho'?'VEÍCULO A CAMINHO - não está na loja ainda':(v.status==='vendido'?'VENDIDO':'EM ESTOQUE NA LOJA'))}</b></div>
-      <div style="margin-top:10px">
-        <label style="font-size:13px;color:#facc15">📸 Fotos (8-12) - ARRASTE PARA MUDAR ORDEM - 1ª foto = CAPA</label>
-        <div class="drag-hint">👆 Segure e arraste as fotos para reordenar. A capa fica com borda amarela.</div>
-        <input type="file" multiple accept="image/*" onchange="addFotos(event, ${i})">
-        <div id="grid-${i}" class="foto-grid"></div>
-      </div>
-      <div style="display:flex;gap:8px;margin-top:10px">
-        <button style="background:#22c55e;width:auto" onclick="salvarStorage()">💾 Salvar</button>
-        <button style="background:#ef4444;width:auto;color:#fff" onclick="removerVeiculo(${i})">🗑️ Remover</button>
-      </div>
-    `;
+      <div style="margin-top:10px"><small style="color:#facc15">📸 Arraste para ordenar - 1ª = CAPA (${v.fotos.length}/12)</small><input type="file" multiple accept="image/*" onchange="addFotos(event,${i})"><div id="grid-${i}" class="foto-grid"></div></div>
+      <div style="display:flex;gap:8px;margin-top:8px"><button style="background:#22c55e;width:auto" onclick="salvar()">💾 Salvar</button><button style="background:#ef4444;width:auto;color:#fff" onclick="if(confirm('Remover?')){veiculos.splice(${i},1); salvar();}">🗑️ Remover</button></div>`;
     lista.appendChild(div);
-    const grid = div.querySelector(`#grid-${i}`);
-    v.fotos.forEach((foto, fIdx)=>{
-      const item = document.createElement('div');
-      item.className = `foto-item ${fIdx===0?'capa':''}`;
-      item.dataset.idx = fIdx;
-      item.innerHTML = `<img src="${foto}"><span class="badge">${fIdx===0?'CAPA':fIdx+1}</span><button class="remove" onclick="removerFoto(${i}, ${fIdx})">×</button>`;
-      grid.appendChild(item);
+    const grid=div.querySelector(`#grid-${i}`);
+    v.fotos.forEach((foto,fi)=>{
+      const it=document.createElement('div'); it.className=`foto-item ${fi===0?'capa':''}`;
+      it.innerHTML=`<img src="${foto}"><span class="badge">${fi===0?'CAPA':fi+1}</span><button class="remove" onclick="veiculos[${i}].fotos.splice(${fi},1); salvarSilencioso(); render()">×</button>`;
+      grid.appendChild(it);
     });
-    // Sortable
-    Sortable.create(grid, {
-      animation: 150,
-      ghostClass: 'capa',
-      onEnd: (evt)=>{
-        const arr = veiculos[i].fotos;
-        const [moved] = arr.splice(evt.oldIndex, 1);
-        arr.splice(evt.newIndex, 0, moved);
-        salvarStorageSilencioso();
-        render();
-      }
-    });
+    Sortable.create(grid,{animation:150,onEnd:evt=>{ const a=veiculos[i].fotos; const [m]=a.splice(evt.oldIndex,1); a.splice(evt.newIndex,0,m); salvarSilencioso(); render(); }});
   });
 }
 
-function salvarStorageSilencioso(){
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(veiculos));
-  document.getElementById('infoQtd').innerText = `${veiculos.length} veículos | Fonte ${STORAGE_KEY}`;
-}
-
-function removerVeiculo(i){
-  if(confirm("Remover este veículo?")){ veiculos.splice(i,1); salvarStorage(); }
-}
-function removerFoto(vIdx, fIdx){
-  veiculos[vIdx].fotos.splice(fIdx,1);
-  salvarStorageSilencioso();
-  render();
-}
-
-function addFotos(e, vIdx){
-  const files = Array.from(e.target.files);
-  if(!files.length) return;
-  let loaded = 0;
-  files.forEach(file=>{
-    const reader = new FileReader();
-    reader.onload = (ev)=>{
-      const img = new Image();
-      img.onload = ()=>{
-        const canvas = document.createElement('canvas');
-        const maxW = 800;
-        const scale = Math.min(1, maxW / img.width);
-        canvas.width = img.width * scale;
-        canvas.height = img.height * scale;
-        canvas.getContext('2d').drawImage(img, 0,0, canvas.width, canvas.height);
-        const base64 = canvas.toDataURL('image/jpeg', 0.7);
-        veiculos[vIdx].fotos.push(base64);
-        loaded++;
-        if(loaded === files.length){
-          salvarStorageSilencioso();
-          render();
-        } else if(files.length===1){
-          salvarStorageSilencioso();
-          render();
-        }
+function addFotos(e, idx){
+  const files=Array.from(e.target.files).slice(0,12 - veiculos[idx].fotos.length);
+  if(veiculos[idx].fotos.length>=12) return alert("Máx 12 fotos por carro");
+  if(veiculos.length>=20 && !veiculos[idx].fotos.length) alert("Você já tem 20 carros - é o limite recomendado");
+  let loaded=0;
+  files.forEach(f=>{
+    const r=new FileReader();
+    r.onload=ev=>{
+      const img=new Image();
+      img.onload=()=>{
+        const c=document.createElement('canvas');
+        const maxW=640; const sc=Math.min(1,maxW/img.width);
+        c.width=img.width*sc; c.height=img.height*sc;
+        c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+        veiculos[idx].fotos.push(c.toDataURL('image/jpeg',0.55));
+        loaded++; if(loaded===files.length){ salvarSilencioso(); render(); }
       };
-      img.src = ev.target.result;
+      img.src=ev.target.result;
     };
-    reader.readAsDataURL(file);
+    r.readAsDataURL(f);
   });
-  e.target.value = "";
+  e.target.value="";
 }
-
 function exportar(){
-  if(!veiculos.length) return alert("Nenhum veículo para exportar!");
-  const blob = new Blob([JSON.stringify(veiculos, null, 2)], {type:"application/json"});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = "veiculos.json";
-  a.click();
+  if(!veiculos.length) return alert("Nada para exportar");
+  if(veiculos.length>20 && !confirm(`Você tem ${veiculos.length} carros, acima dos 20 recomendados. Exportar mesmo assim? Arquivo ficará grande.`)) return;
+  const blob=new Blob([JSON.stringify(veiculos,null,2)],{type:"application/json"});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a'); a.href=url; a.download="veiculos.json"; a.click();
   URL.revokeObjectURL(url);
-  alert(`Exportado ${veiculos.length} veículos! Agora vá no GitHub e cole no arquivo veiculos.json`);
+  alert(`Exportado ${veiculos.length} carros - ${(blob.size/1024/1024).toFixed(2)} MB. Cole no GitHub em veiculos.json`);
 }
-
-// Auto login se já logado na sessão
-if(sessionStorage.getItem('luchini_logado')==='1'){
-  document.getElementById('login').classList.add('hidden');
-  document.getElementById('painel').classList.remove('hidden');
-  render();
-}
-const originalLogar = logar;
-logar = function(){
-  const s = document.getElementById('senha').value;
-  if(s === SENHA_CORRETA){
-    sessionStorage.setItem('luchini_logado','1');
-    document.getElementById('login').classList.add('hidden');
-    document.getElementById('painel').classList.remove('hidden');
-    render();
-  } else {
-    document.getElementById('erro').style.display='block';
-  }
-}
+if(sessionStorage.getItem('logado')==='1'){ document.getElementById('login').classList.add('hidden'); document.getElementById('painel').classList.remove('hidden'); carregar(); }
 </script>
 </body>
 </html>
