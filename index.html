@@ -146,7 +146,7 @@ function render(){
 function whats(idx){
   const v = veiculos[idx];
   if(!v) return;
-  const txt = encodeURIComponent(`Olá Soares! Tenho interesse no ${v.modelo} ${v.ano} por ${v.preco} que vi na vitrine. Ainda está disponível?`);
+  const txt = encodeURIComponent(`Olá Soares Tenho interesse no ${v.modelo} que vi na vitrine. Ainda está disponível?`);
   window.open(`https://wa.me/${WHATS_NUM}?text=${txt}`,'_blank');
 }
 function abrirLightbox(vIdx, fIdx){
