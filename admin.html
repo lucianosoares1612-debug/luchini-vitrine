@@ -83,7 +83,7 @@ function novoVeiculo(){
   editIndex = -1;
   const modelo = prompt("Modelo do veículo (ex: Onix LTZ 2022):");
   if(!modelo) return;
-  veiculos.unshift({modelo, ano:"", preco:"", km:"", fotos:[]});
+  veiculos.unshift({modelo, ano:"", preco:"", km:"", fotos:[], status:"estoque"});
   editIndex = 0;
   salvarStorage();
   setTimeout(()=> abrirEdicao(0), 100);
@@ -107,7 +107,13 @@ function render(){
         <input style="flex:1" placeholder="Ano" value="${v.ano||''}" oninput="veiculos[${i}].ano=this.value; salvarStorageSilencioso()">
         <input style="flex:1" placeholder="Preço" value="${v.preco||''}" oninput="veiculos[${i}].preco=this.value; salvarStorageSilencioso()">
         <input style="flex:1" placeholder="KM" value="${v.km||''}" oninput="veiculos[${i}].km=this.value; salvarStorageSilencioso()">
+        <select style="flex:1;min-width:140px" onchange="veiculos[${i}].status=this.value; salvarStorageSilencioso(); render()">
+          <option value="estoque" ${(v.status==='estoque'||!v.status)?'selected':''}>🚗 EM ESTOQUE</option>
+          <option value="a_caminho" ${v.status==='a_caminho'?'selected':''}>🚚 A CAMINHO</option>
+          <option value="vendido" ${v.status==='vendido'?'selected':''}>✅ VENDIDO</option>
+        </select>
       </div>
+      <div style="margin-top:6px;font-size:12px;color:${(v.status==='a_caminho'?'#facc15':'#22c55e')}">Status: <b>${(v.status==='a_caminho'?'VEÍCULO A CAMINHO - não está na loja ainda':(v.status==='vendido'?'VENDIDO':'EM ESTOQUE NA LOJA'))}</b></div>
       <div style="margin-top:10px">
         <label style="font-size:13px;color:#facc15">📸 Fotos (8-12) - ARRASTE PARA MUDAR ORDEM - 1ª foto = CAPA</label>
         <div class="drag-hint">👆 Segure e arraste as fotos para reordenar. A capa fica com borda amarela.</div>
