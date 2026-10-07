@@ -16,7 +16,6 @@ body{background:#0a0a0a;color:#fff;font-family:Inter,Arial,sans-serif}
 .nav{display:flex;gap:20px;align-items:center;font-size:13px;color:#aaa}
 .nav a{color:#fff;text-decoration:none;border:1px solid #333;padding:8px 14px;border-radius:20px}
 .nav a:hover{border-color:#facc15;color:#facc15}
-
 .hero{max-width:1300px;margin:0 auto;padding:50px 20px 30px}
 .hero h1{font-family:'Playfair Display',serif;font-size:48px;line-height:.95}
 .hero h1 i{color:#facc15;font-style:normal}
@@ -24,11 +23,9 @@ body{background:#0a0a0a;color:#fff;font-family:Inter,Arial,sans-serif}
 .hero .pills{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap}
 .pill{background:#1a1a1a;border:1px solid #2a2a2a;padding:8px 14px;border-radius:30px;font-size:12px;color:#ccc}
 .pill b{color:#fff}
-
 .filtros{max-width:1300px;margin:0 auto;padding:0 20px 10px;display:flex;gap:10px;flex-wrap:wrap}
 .filtro{padding:10px 18px;border-radius:30px;border:1px solid #333;background:#141414;color:#fff;cursor:pointer;font-size:13px}
 .filtro.active{background:#facc15;color:#000;border-color:#facc15;font-weight:700}
-
 .grid{max-width:1300px;margin:0 auto;padding:20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
 .card{background:#141414;border:1px solid #222;border-radius:16px;overflow:hidden;transition:.2s}
 .card:hover{border-color:#333;transform:translateY(-3px)}
@@ -47,14 +44,10 @@ body{background:#0a0a0a;color:#fff;font-family:Inter,Arial,sans-serif}
 .btn{margin-top:12px;width:100%;padding:12px;background:#fff;color:#000;border:none;border-radius:10px;font-weight:700;cursor:pointer}
 .btn:hover{background:#facc15}
 .btn2{background:#222;color:#fff}
-
 .section-title{max-width:1300px;margin:30px auto 0;padding:0 20px;font-size:22px;font-weight:800}
 .section-title small{display:block;color:#666;font-size:12px;font-weight:400;margin-top:4px}
-
 .footer{background:#000;border-top:1px solid #222;margin-top:40px;padding:30px 20px;text-align:center;color:#666;font-size:12px}
 .whats{position:fixed;bottom:20px;right:20px;background:#25D366;color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;text-decoration:none;box-shadow:0 8px 20px rgba(0,0,0,.5);z-index:60}
-
-/* LIGHTBOX TOP - igual antigo */
 #lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;z-index:100;flex-direction:column}
 #lightbox.open{display:flex}
 .lb-top{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid #222;background:#000}
@@ -72,7 +65,6 @@ body{background:#0a0a0a;color:#fff;font-family:Inter,Arial,sans-serif}
 </style>
 </head>
 <body>
-
 <header class="header">
   <div class="header-inner">
     <div class="logo"><b>GRUPO LUCHINI</b><span>SEMINOVOS PREMIUM</span></div>
@@ -82,7 +74,6 @@ body{background:#0a0a0a;color:#fff;font-family:Inter,Arial,sans-serif}
     </div>
   </div>
 </header>
-
 <div class="hero">
   <h1>Seminovos selecionados.<br><i>Prontos e a caminho.</i></h1>
   <p>A vitrine oficial do <b>Grupo Luchini</b> com oportunidades que acabaram de entrar e unidades já disponíveis para visita. Transparência total, fotos reais.</p>
@@ -92,26 +83,22 @@ body{background:#0a0a0a;color:#fff;font-family:Inter,Arial,sans-serif}
     <div class="pill">✓ Fotos reais  ✓ Procedência  ✓ Laudo</div>
   </div>
 </div>
-
 <div class="filtros">
   <button class="filtro active" onclick="filtrar('todos',this)">Todos</button>
   <button class="filtro" onclick="filtrar('estoque',this)">🚗 Em estoque</button>
   <button class="filtro" onclick="filtrar('a_caminho',this)">🚚 A caminho / Reservas</button>
 </div>
-
-<h2 class="section-title" id="tituloSessao">Nosso estoque atualizado <small>Clique no carro para ver todas as fotos em alta</small></h2>
+<h2 class="section-title">Nosso estoque atualizado <small>Clique no carro para ver todas as fotos em alta</small></h2>
 <div class="grid" id="grid"></div>
-
 <div class="footer">
   <b style="color:#fff;letter-spacing:3px">GRUPO LUCHINI</b><br><br>
   Vitrine oficial • Atualizada diariamente pelo Modo Gerente<br>
   © 2026 - Todos os direitos reservados
 </div>
-
 <div id="lightbox">
   <div class="lb-top">
     <div><b id="lbTitulo"></b><br><small id="lbContador"></small></div>
-    <div style="display:flex;gap:8px"><button class="lb-close" onclick="fecharLightbox()">✕ Fechar</button></div>
+    <div><button class="lb-close" onclick="fecharLightbox()">✕ Fechar</button></div>
   </div>
   <div class="lb-img">
     <button class="lb-arrow lb-prev" onclick="mudarFoto(-1)">‹</button>
@@ -120,22 +107,15 @@ body{background:#0a0a0a;color:#fff;font-family:Inter,Arial,sans-serif}
   </div>
   <div class="lb-thumbs" id="lbThumbs"></div>
 </div>
-
 <a class="whats" href="https://wa.me/551145834515" target="_blank">W</a>
-
 <script>
 let veiculos = [];
 let filtroAtual = 'todos';
 let lbFotos = []; let lbIndex = 0;
 const WHATS_NUM = "551145834515";
-
 async function carregar(){
-  try{
-    const r = await fetch('./veiculos.json?v='+Date.now());
-    veiculos = await r.json();
-  }catch(e){
-    veiculos = JSON.parse(localStorage.getItem('luchini_veiculos_v5')||'[]');
-  }
+  try{ const r = await fetch('./veiculos.json?v='+Date.now()); veiculos = await r.json(); }
+  catch(e){ veiculos = JSON.parse(localStorage.getItem('luchini_veiculos_v5')||'[]'); }
   render();
 }
 function filtrar(tipo, btn){
@@ -149,41 +129,24 @@ function render(){
   grid.innerHTML='';
   let lista = veiculos.filter(v=>v.status!=='vendido');
   if(filtroAtual!=='todos') lista = lista.filter(v=> (v.status||'estoque')===filtroAtual);
-
-  const estoque = veiculos.filter(v=> (v.status||'estoque')==='estoque' && v.status!=='vendido').length;
-  const caminho = veiculos.filter(v=> v.status==='a_caminho').length;
-  document.getElementById('qtdEstoque').innerText = estoque;
-  document.getElementById('qtdCaminho').innerText = caminho;
-
+  document.getElementById('qtdEstoque').innerText = veiculos.filter(v=> (v.status||'estoque')==='estoque' && v.status!=='vendido').length;
+  document.getElementById('qtdCaminho').innerText = veiculos.filter(v=> v.status==='a_caminho').length;
   if(!lista.length){ grid.innerHTML='<div style="grid-column:1/-1;color:#666;padding:40px;text-align:center">Nenhum veículo nessa categoria no momento.</div>'; return; }
-
   lista.forEach(v=>{
     const status = v.status||'estoque';
     const fotos = v.fotos||[];
     const capa = fotos[0]||'';
     const realIndex = veiculos.indexOf(v);
     const card = document.createElement('div'); card.className='card';
-    card.innerHTML=`
-      <div class="img-wrap" onclick="abrirLightbox(${realIndex},0)" style="cursor:zoom-in">
-        <img src="${capa}" loading="lazy">
-        <span class="badge ${status}">${status==='a_caminho'?'🚚 A CAMINHO - RESERVE': status==='estoque'?'✓ EM ESTOQUE':status.toUpperCase()}</span>
-        <span class="fotos-count">📸 ${fotos.length} fotos - clique para ampliar</span>
-      </div>
-      <div class="info">
-        <h3>${v.modelo||'Sem nome'}</h3>
-        <div class="meta"><span>${v.ano||'-'}</span><span>•</span><span>${v.km||'-'} km</span></div>
-        <div class="preco">${v.preco||'Consulte'}</div>
-        <button class="btn" onclick="whats(${realIndex})">Tenho interesse no ${(v.modelo||'').replace(/'/g,'').trim()}</button>
-        <button class="btn btn2" onclick="abrirLightbox(${realIndex},0)">Ver ${fotos.length} fotos</button>
-      </div>
-    `;
+    const modeloSafe = (v.modelo||'Sem nome').replace(/'/g,'').trim();
+    card.innerHTML=`<div class="img-wrap" onclick="abrirLightbox(${realIndex},0)" style="cursor:zoom-in"><img src="${capa}" loading="lazy"><span class="badge ${status}">${status==='a_caminho'?'🚚 A CAMINHO - RESERVE': status==='estoque'?'✓ EM ESTOQUE':status.toUpperCase()}</span><span class="fotos-count">📸 ${fotos.length} fotos - clique para ampliar</span></div><div class="info"><h3>${v.modelo||'Sem nome'}</h3><div class="meta"><span>${v.ano||'-'}</span><span>•</span><span>${v.km||'-'} km</span></div><div class="preco">${v.preco||'Consulte'}</div><button class="btn" onclick="whats(${realIndex})">Tenho interesse no ${modeloSafe}</button><button class="btn btn2" onclick="abrirLightbox(${realIndex},0)">Ver ${fotos.length} fotos</button></div>`;
     grid.appendChild(card);
   });
 }
 function whats(idx){
   const v = veiculos[idx];
-  if(!v){ return; }
-  const txt = encodeURIComponent(`Olá Grupo Luchini! Tenho interesse no ${v.modelo} ${v.ano} por ${v.preco} que vi na vitrine. Ainda está disponível?`);
+  if(!v) return;
+  const txt = encodeURIComponent(`Olá Soares! Tenho interesse no ${v.modelo} ${v.ano} por ${v.preco} que vi na vitrine. Ainda está disponível?`);
   window.open(`https://wa.me/${WHATS_NUM}?text=${txt}`,'_blank');
 }
 function abrirLightbox(vIdx, fIdx){
@@ -192,7 +155,6 @@ function abrirLightbox(vIdx, fIdx){
   document.getElementById('lbTitulo').innerText = v.modelo;
   document.getElementById('lightbox').classList.add('open');
   atualizarLightbox();
-  // thumbs
   const thumbs = document.getElementById('lbThumbs'); thumbs.innerHTML='';
   lbFotos.forEach((f,i)=>{
     const im = document.createElement('img'); im.src=f; if(i===lbIndex) im.classList.add('active');
@@ -206,12 +168,8 @@ function atualizarLightbox(){
   document.getElementById('lbContador').innerText = `Foto ${lbIndex+1} de ${lbFotos.length} - clique nas setas ou arraste`;
   document.querySelectorAll('#lbThumbs img').forEach((im,i)=> im.classList.toggle('active', i===lbIndex));
 }
-function mudarFoto(dir){
-  lbIndex = (lbIndex+dir+lbFotos.length)%lbFotos.length;
-  atualizarLightbox();
-}
+function mudarFoto(dir){ lbIndex = (lbIndex+dir+lbFotos.length)%lbFotos.length; atualizarLightbox(); }
 function fecharLightbox(){ document.getElementById('lightbox').classList.remove('open'); }
-// teclado e swipe
 document.addEventListener('keydown', e=>{
   if(!document.getElementById('lightbox').classList.contains('open')) return;
   if(e.key==='ArrowRight') mudarFoto(1);
@@ -224,7 +182,6 @@ document.getElementById('lbImg').addEventListener('touchend', e=>{
   const dx = e.changedTouches[0].clientX - startX;
   if(Math.abs(dx)>50){ mudarFoto(dx<0?1:-1); }
 });
-
 carregar();
 </script>
 </body>
